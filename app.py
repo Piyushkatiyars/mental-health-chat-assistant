@@ -32,7 +32,7 @@ if not GEMINI_API_KEY:
 
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel(
-    model_name="gemini-3.6-flash",
+    model_name="gemini-2.5-flash",
     system_instruction=SYSTEM_PROMPT,
 )
 
@@ -55,6 +55,12 @@ def init_db():
     )
     conn.commit()
     conn.close()
+
+
+# Run at import time so the table exists whether the app is started with
+# `python app.py` (local dev) or `gunicorn app:app` (production) — gunicorn
+# never executes the __main__ block below.
+init_db()
 
 
 def save_message(session_id, role, content, flagged=0):
@@ -147,5 +153,4 @@ def history():
 
 
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True, port=5000)
