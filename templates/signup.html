@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign up — Mental Wellness Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="auth-page">
+    <div class="auth-card">
+      <header class="letterhead">
+        <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M8 28C8 28 14 12 22 12C30 12 26 24 20 24C14 24 16 14 24 10C30 7 34 10 34 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <h1>Create an account</h1>
+        <p class="tagline">A space to talk things through — not a replacement for professional care.</p>
+      </header>
+
+      <div class="divider" aria-hidden="true"></div>
+
+      {% if error %}
+      <div class="auth-error">{{ error }}</div>
+      {% endif %}
+
+      <form class="auth-form" method="POST" action="/signup">
+        <label class="auth-label" for="username">Username</label>
+        <input class="auth-input" id="username" name="username" type="text" autocomplete="username" required autofocus />
+
+        <label class="auth-label" for="password">Password</label>
+        <input class="auth-input" id="password" name="password" type="password" autocomplete="new-password" required />
+
+        <button class="auth-submit" type="submit">Sign up</button>
+      </form>
+
+      <p class="auth-switch">
+        Already have an account? <a href="/login">Log in</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

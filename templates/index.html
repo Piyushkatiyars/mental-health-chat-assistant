@@ -10,23 +10,40 @@
 <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-  <div class="page">
-    <header class="letterhead">
-      <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M8 28C8 28 14 12 22 12C30 12 26 24 20 24C14 24 16 14 24 10C30 7 34 10 34 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-      </svg>
-      <h1>Mental wellness assistant</h1>
-      <p class="tagline">A space to talk things through — not a replacement for professional care. If things feel urgent, please reach out to a crisis line or someone you trust.</p>
-    </header>
+  <div class="app-layout">
 
-    <div class="divider" aria-hidden="true"></div>
+    <aside class="sidebar">
+      <button id="new-chat-btn" class="new-chat-btn" type="button">+ New chat</button>
+      <div class="history-heading">History</div>
+      <div id="history-list" class="history-list"></div>
 
-    <main id="chat-window" class="chat-window" aria-live="polite"></main>
+      <div class="sidebar-footer">
+        {% if username %}
+        <div class="sidebar-username">{{ username }}</div>
+        {% endif %}
+        <a class="sidebar-logout" href="/logout">Log out</a>
+      </div>
+    </aside>
 
-    <form id="chat-form" class="composer">
-      <input id="message-input" type="text" placeholder="What's on your mind?" autocomplete="off" required />
-      <button type="submit">Send</button>
-    </form>
+    <div class="page">
+      <header class="letterhead">
+        <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M8 28C8 28 14 12 22 12C30 12 26 24 20 24C14 24 16 14 24 10C30 7 34 10 34 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <h1>Mental wellness assistant</h1>
+        <p class="tagline">A space to talk things through — not a replacement for professional care. If things feel urgent, please reach out to a crisis line or someone you trust.</p>
+      </header>
+
+      <div class="divider" aria-hidden="true"></div>
+
+      <main id="chat-window" class="chat-window" aria-live="polite"></main>
+
+      <form id="chat-form" class="composer">
+        <input id="message-input" type="text" placeholder="What's on your mind?" autocomplete="off" required />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+
   </div>
 
   <script src="/static/chat.js"></script>
